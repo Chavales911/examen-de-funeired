@@ -1,13 +1,10 @@
-
 const saludo = document.getElementById("saludo");
 const guardado = localStorage.getItem("nombreUsuario");
 if (guardado) {
   saludo.textContent = "Hola de nuevo, " + guardado + "!";
 }
 
-
 document.querySelector("button").onclick = function() {
-
   let nombre = document.getElementById("nombre");
   let email = document.getElementById("email");
   let edad = document.getElementById("edad");
@@ -20,7 +17,6 @@ document.querySelector("button").onclick = function() {
   pais.classList.remove("error");
   msg.textContent = "";
   msg.style.color = "";
-
 
   if (
     nombre.value.trim().length === 0 ||
@@ -38,7 +34,6 @@ document.querySelector("button").onclick = function() {
     return;
   }
 
-
   let edadNum = parseInt(edad.value);
   if (isNaN(edadNum) || edadNum < 18 || edadNum > 99) {
     msg.textContent = "La edad debe estar entre 18 y 99.";
@@ -47,14 +42,14 @@ document.querySelector("button").onclick = function() {
     return;
   }
 
-
   localStorage.setItem("nombreUsuario", nombre.value.trim());
-
+  localStorage.setItem("emailUsuario", email.value.trim());
+  localStorage.setItem("edadUsuario", edad.value.trim());
+  localStorage.setItem("paisUsuario", pais.value.trim());
 
   msg.textContent = "Formulario enviado correctamente.";
   msg.style.color = "green";
 
- 
   nombre.value = "";
   email.value = "";
   edad.value = "";
